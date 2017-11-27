@@ -28,7 +28,8 @@ public class SectionUseActivity extends BaseActivity {
         setBackBtn();
         setTitle("Section Use");
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,1
+        ));
         mData = DataServer.getSampleData();
         SectionAdapter sectionAdapter = new SectionAdapter(R.layout.item_section_content, R.layout.def_section_head, mData);
 
@@ -36,16 +37,17 @@ public class SectionUseActivity extends BaseActivity {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 MySection mySection = mData.get(position);
-                if (mySection.isHeader)
-                    Toast.makeText(SectionUseActivity.this, mySection.header, Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(SectionUseActivity.this, mySection.t.getName(), Toast.LENGTH_LONG).show();
+                if (mySection.isHeader) {
+                    Toast.makeText(SectionUseActivity.this, mySection.header+position, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SectionUseActivity.this, mySection.t.getName()+position, Toast.LENGTH_SHORT).show();
+                }
             }
         });
         sectionAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(SectionUseActivity.this, "onItemChildClick" + position, Toast.LENGTH_LONG).show();
+                Toast.makeText(SectionUseActivity.this, "onItemChildClick" + position, Toast.LENGTH_SHORT).show();
             }
         });
         mRecyclerView.setAdapter(sectionAdapter);

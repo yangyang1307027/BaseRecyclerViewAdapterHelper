@@ -5,7 +5,6 @@ import com.chad.baserecyclerviewadapterhelper.entity.MySection;
 import com.chad.baserecyclerviewadapterhelper.entity.Video;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 
 import java.util.List;
 
@@ -44,6 +43,7 @@ public class SectionAdapter extends BaseSectionQuickAdapter<MySection, BaseViewH
             case 1:
                 helper.setImageResource(R.id.iv, R.mipmap.m_img2);
                 break;
+            default:break;
 
         }
         helper.setText(R.id.tv, video.getName());
